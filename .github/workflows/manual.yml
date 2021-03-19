@@ -10,9 +10,9 @@ on:
     inputs:
       name:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'Test maven installation'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'Maven & Java'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -26,14 +26,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Send greeting
+    - name: Github events
       run: echo "Hello ${{ github.event.inputs.name }}"
-    - name: Setup Maven
+    - name: JAVA 8 And MAVEN Action
       # You may pin to the exact commit or the version.
-      # uses: stCarolas/setup-maven@1d56b37995622db66cce1214d81014b09807fb5a
-      uses: stCarolas/setup-maven@v4
+      # uses: kobi-lemberg/github-maven-step@7f20340a98fc9890b1e47260368175df671788b1
+      uses: kobi-lemberg/github-maven-step@java8_new
       with:
-        # Version Spec of the version to use.  Examples: 10.x, 10.15.1, >=10.15.0
-        maven-version: 3.5.4 # optional, default is 3.5.4
+        # Command to run
+        command: echo "JAVA_HOME- $JAVA_HOME M2_HOME- $M2_HOME MAVEN_HOME- $MAVEN_HOME"
+        
         
         
